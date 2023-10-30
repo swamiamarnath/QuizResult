@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Quiz Results</title>
+    <style>
+        body {
+            background-color: #f2f2f2; /* Set your desired background color */
+            font-family: Arial, sans-serif; /* Optional: Set the font family for the entire page */
+        }
+
+        h2 {
+            text-align: center; /* Optional: Center the heading */
+        }
+
+        table {
+            background-color: white; /* Set the background color for the table */
+            margin: auto; /* Optional: Center the table horizontally */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+            border-collapse: collapse; /* Optional: Collapse table borders for better styling */
+            width: 80%; /* Optional: Set the width of the table */
+        }
+
+        th, td {
+            padding: 15px; /* Optional: Add padding for better spacing */
+            text-align: left; /* Optional: Align text to the left within cells */
+            border-bottom: 1px solid #ddd; /* Optional: Add a bottom border to table cells */
+        }
+
+        th {
+            background-color: #4caf50; /* Set the background color for table headers */
+            color: white; /* Set the text color for table headers */
+        }
+
+        button {
+            background-color: #4caf50; /* Set your desired button color */
+            color: white; /* Set the text color for the button */
+            padding: 10px 20px; /* Add padding for better button appearance */
+            border: none; /* Remove the default button border */
+            border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+            cursor: pointer; /* Add a pointer cursor on hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>Quiz Results</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Score</th>
+                <th>Quiz Category</th>
+                <th>Quiz Level</th>
+                <th>Feedback</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="result : ${quizResults}">
+                <td th:text="${result.userName}"></td>
+                <td th:text="${result.score}"></td>
+                <td th:text="${result.quizCategory}"></td>
+                <td th:text="${result.quizLevel}"></td>
+                <td th:text="${result.feedback}"></td>
+                <td>
+                    <a th:href="@{/quiz/edit/{id}(id=${result.id})}">
+                        <button>Edit</button>
+                    </a>
+                    <a th:href="@{/quiz/delete/{id}(id=${result.id})}">
+                        <button>Delete</button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

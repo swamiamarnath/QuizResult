@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Quiz Result</title>
+    <!-- Add any additional styles or scripts as needed -->
+</head>
+<body style="background-color: #f2f2f2;">
+    <h2>Edit Quiz Result</h2>
+    <form action="/quiz/update" method="post" th:object="${quizResult}" style="background-color: white; padding: 20px; border-radius: 10px; width: 50%; margin: auto; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <!-- You can use the th:field attribute to bind form fields to your model -->
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" th:field="*{id}" readonly>
+        <br><br>
+
+        <label for="userName">User Name:</label>
+        <input type="text" id="userName" name="userName" th:field="*{userName}" required>
+        <br><br>
+
+        <label for="score">Score:</label>
+        <input type="number" id="score" name="score" th:field="*{score}" required>
+        <br><br>
+
+        <label for="quizCategory">Quiz Category:</label>
+        <input type="text" id="quizCategory" name="quizCategory" th:field="*{quizCategory}" required>
+        <br><br>
+
+        <label for="quizLevel">Quiz Level:</label>
+        <input type="text" id="quizLevel" name="quizLevel" th:field="*{quizLevel}" required>
+        <br><br>
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" th:field="*{feedback}" rows="4" required></textarea>
+        <br><br>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
